@@ -1,141 +1,719 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Zombie Survival</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#11100e">
+<meta name="description" content="Barbearia Sr. Mexicano - Estilo, personalidade e cuidado masculino em Fortaleza.">
+<title>Sr. Mexicano | Barbearia</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-body{
-  margin:0;
-  overflow:hidden;
-  background:#111;
+:root {
+  --bg: #11100e;
+  --card: #1c1915;
+  --gold: #c99b52;
+  --white: #f4eee4;
+  --gray: #aaa197;
 }
-canvas{
-  display:block;
-  background:#1a1a1a;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* MENU */
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  background: #11100eeF;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #ffffff15;
+}
+
+nav {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: Oswald;
+  font-size: 25px;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+
+.logo span {
+  display: block;
+  font-family: 'DM Sans';
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: white;
+}
+
+.menu {
+  display: flex;
+  gap: 30px;
+}
+
+.menu a {
+  font-size: 13px;
+  transition: .3s;
+}
+
+.menu a:hover {
+  color: var(--gold);
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 24px;
+  background: var(--gold);
+  color: #15110b;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: #e5bd79;
+  transform: translateY(-3px);
+}
+
+/* INÍCIO */
+
+.hero {
+  min-height: 750px;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, #11100e 5%, #11100ecf 48%, #11100e45),
+    url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=2000&q=90')
+    center/cover;
+}
+
+.hero-content {
+  max-width: 680px;
+  padding-top: 70px;
+}
+
+.subtitle {
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: Oswald;
+  font-size: clamp(65px, 10vw, 115px);
+  line-height: .95;
+  margin: 25px 0;
+}
+
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero p {
+  color: #d0c8bd;
+  max-width: 500px;
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 35px;
+  flex-wrap: wrap;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+
+/* SEÇÕES */
+
+section {
+  padding: 100px 0;
+}
+
+.section-title {
+  font-family: Oswald;
+  font-size: clamp(40px, 6vw, 60px);
+  margin: 15px 0;
+}
+
+.section-description {
+  color: var(--gray);
+  line-height: 1.9;
+  max-width: 650px;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+/* SOBRE */
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+}
+
+.about-text p {
+  color: var(--gray);
+  line-height: 1.9;
+  margin: 20px 0;
+}
+
+/* SERVIÇOS */
+
+.services {
+  background: #171512;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 45px;
+}
+
+.service-card {
+  background: var(--card);
+  border: 1px solid #393128;
+  padding: 35px;
+  transition: .3s;
+}
+
+.service-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-7px);
+}
+
+.service-number {
+  color: var(--gold);
+  font-family: Oswald;
+  font-size: 18px;
+}
+
+.service-card h3 {
+  font-family: Oswald;
+  font-size: 27px;
+  margin: 20px 0 12px;
+}
+
+.service-card p {
+  color: var(--gray);
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+/* GALERIA */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  transition: .4s;
+  filter: brightness(.8);
+}
+
+.gallery-grid img:hover {
+  filter: brightness(1);
+  transform: scale(1.02);
+}
+
+/* AGENDAMENTO */
+
+.booking {
+  background: linear-gradient(120deg, #2a2116, #17130e);
+  border: 1px solid #574328;
+  padding: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.booking h2 {
+  font-family: Oswald;
+  font-size: 45px;
+  margin: 15px 0;
+}
+
+.booking p {
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+/* CONTATO */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-top: 40px;
+}
+
+.contact-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #393128;
+}
+
+.contact-item h3 {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.contact-item p {
+  line-height: 1.8;
+}
+
+.map {
+  background: var(--card);
+  border: 1px solid #393128;
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* RODAPÉ */
+
+footer {
+  border-top: 1px solid #393128;
+  padding: 35px 0;
+  color: var(--gray);
+  text-align: center;
+  font-size: 12px;
+}
+
+/* WHATSAPP */
+
+.whatsapp {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #20c765;
+  color: #07190e;
+  padding: 16px 22px;
+  border-radius: 40px;
+  font-weight: bold;
+  z-index: 200;
+  box-shadow: 0 5px 25px #0008;
+}
+
+/* RESPONSIVIDADE */
+
+@media(max-width: 800px) {
+  .menu {
+    display: none;
+  }
+
+  .about,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .booking {
+    display: block;
+    padding: 35px;
+  }
+
+  .booking .btn {
+    margin-top: 25px;
+  }
+
+  .hero {
+    min-height: 650px;
+  }
+
+  section {
+    padding: 70px 0;
+  }
 }
 </style>
 </head>
+
 <body>
 
-<canvas id="game"></canvas>
+<header>
+  <nav class="container">
+
+    <a href="#inicio" class="logo">
+      SR. MEXICANO
+      <span>BARBEARIA</span>
+    </a>
+
+    <div class="menu">
+      <a href="#inicio">INÍCIO</a>
+      <a href="#sobre">SOBRE</a>
+      <a href="#servicos">SERVIÇOS</a>
+      <a href="#galeria">GALERIA</a>
+      <a href="#contato">CONTATO</a>
+    </div>
+
+    <a class="btn" href="https://wa.me/5585987443485">
+      Agendar
+    </a>
+
+  </nav>
+</header>
+
+<main>
+
+<!-- INÍCIO -->
+
+<section class="hero" id="inicio">
+  <div class="container">
+
+    <div class="hero-content">
+
+      <div class="subtitle">
+        Fortaleza · Ceará
+      </div>
+
+      <h1>
+        SEU ESTILO.<br>
+        SUA <span>IDENTIDADE.</span>
+      </h1>
+
+      <p>
+        Mais que um corte, uma experiência.
+        Cuide do seu visual, valorize sua personalidade
+        e tenha um estilo que representa você.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a class="btn"
+        href="https://wa.me/5585987443485?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio.">
+          AGENDAR HORÁRIO
+        </a>
+
+        <a class="btn btn-outline" href="#sobre">
+          CONHECER
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+
+<section id="sobre">
+  <div class="container about">
+
+    <img
+      src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1000&q=90"
+      alt="Ambiente de barbearia">
+
+    <div class="about-text">
+
+      <div class="subtitle">Nossa identidade</div>
+
+      <h2 class="section-title">
+        MAIS QUE UMA<br>
+        <span class="gold">BARBEARIA.</span>
+      </h2>
+
+      <p>
+        A Barbearia Sr. Mexicano é uma barbearia
+        localizada em Fortaleza, Ceará.
+      </p>
+
+      <p>
+        Um espaço dedicado ao estilo masculino,
+        à personalidade e ao cuidado com o visual.
+      </p>
+
+      <p>
+        Entre em contato para conhecer os serviços
+        disponíveis e consultar horários.
+      </p>
+
+      <a class="btn" href="https://www.instagram.com/barbearia_srmexicano/" target="_blank">
+        CONHECER INSTAGRAM
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+
+<section class="services" id="servicos">
+  <div class="container">
+
+    <div class="subtitle">O que oferecemos</div>
+
+    <h2 class="section-title">
+      NOSSOS <span class="gold">SERVIÇOS.</span>
+    </h2>
+
+    <p class="section-description">
+      Consulte diretamente com a barbearia os
+      serviços disponíveis e seus respectivos valores.
+    </p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="service-number">01</span>
+        <h3>Corte masculino</h3>
+        <p>
+          Consulte os estilos de corte disponíveis
+          e escolha o visual que combina com você.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-number">02</span>
+        <h3>Barba</h3>
+        <p>
+          Consulte as opções de cuidados e
+          acabamento para sua barba.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-number">03</span>
+        <h3>Estilo personalizado</h3>
+        <p>
+          Converse com a equipe sobre o visual
+          que deseja e consulte as possibilidades.
+        </p>
+      </div>
+
+    </div>
+
+    <p style="color:#aaa197;font-size:12px;margin-top:20px">
+      Serviços ilustrativos. Confirme a disponibilidade diretamente com a barbearia.
+    </p>
+
+  </div>
+</section>
+
+<!-- GALERIA -->
+
+<section id="galeria">
+  <div class="container">
+
+    <div class="subtitle">Nosso ambiente</div>
+
+    <h2 class="section-title">
+      GALERIA <span class="gold">DE ESTILO.</span>
+    </h2>
+
+    <p class="section-description">
+      Conheça referências de ambientes e estilos de barbearia.
+      Substitua estas imagens por fotos reais autorizadas
+      da Sr. Mexicano.
+    </p>
+
+    <div class="gallery-grid">
+
+      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=85" alt="Barbearia">
+
+      <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=85" alt="Cadeira de barbeiro">
+
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=85" alt="Ferramentas de barbearia">
+
+    </div>
+
+  </div>
+</section>
+
+<!-- AGENDAMENTO -->
+
+<section>
+  <div class="container">
+
+    <div class="booking">
+
+      <div>
+        <div class="subtitle">Seu próximo visual começa aqui</div>
+
+        <h2>VAMOS AGENDAR?</h2>
+
+        <p>
+          Entre em contato pelo WhatsApp para consultar
+          disponibilidade, horários e valores.
+        </p>
+      </div>
+
+      <a class="btn"
+      href="https://wa.me/5585987443485?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20um%20hor%C3%A1rio.">
+        AGENDAR PELO WHATSAPP
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTATO -->
+
+<section id="contato">
+  <div class="container">
+
+    <div class="subtitle">Entre em contato</div>
+
+    <h2 class="section-title">
+      FALE <span class="gold">CONOSCO.</span>
+    </h2>
+
+    <div class="contact-grid">
+
+      <div>
+
+        <div class="contact-item">
+          <h3>WHATSAPP</h3>
+          <p>(85) 98744-3485</p>
+          <a class="gold" href="https://wa.me/5585987443485">
+            Enviar mensagem ↗
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <h3>INSTAGRAM</h3>
+          <p>@barbearia_srmexicano</p>
+          <a class="gold" href="https://www.instagram.com/barbearia_srmexicano/" target="_blank">
+            Acessar perfil ↗
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <h3>LOCALIZAÇÃO</h3>
+          <p>
+            Fortaleza - Ceará
+          </p>
+          <p style="color:#aaa197;font-size:12px">
+            Confirme o endereço atualizado pelo WhatsApp.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="map">
+
+        <h2 class="gold">LOCALIZAÇÃO</h2>
+
+        <p>
+          Encontre a barbearia e planeje sua visita.
+        </p>
+
+        <a class="btn"
+        href="https://www.google.com/maps/search/?api=1&query=Barbearia+Sr+Mexicano+Fortaleza+CE"
+        target="_blank">
+          ABRIR GOOGLE MAPS
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+
+    <h2 class="logo">SR. MEXICANO</h2>
+
+    <p style="margin-top:15px">
+      Estilo, personalidade e identidade.
+    </p>
+
+    <p style="margin-top:20px">
+      © <span id="year"></span> Barbearia Sr. Mexicano.
+    </p>
+
+    <p style="font-size:10px;margin-top:12px">
+      Modelo de site independente, sem vínculo oficial confirmado com a empresa.
+    </p>
+
+  </div>
+</footer>
+
+<a class="whatsapp"
+href="https://wa.me/5585987443485?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es."
+target="_blank">
+  WHATSAPP ↗
+</a>
 
 <script>
-
-const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const player = {
- x: canvas.width/2,
- y: canvas.height/2,
- size:20,
- speed:5
-};
-
-let keys = {};
-
-document.addEventListener("keydown",e=>keys[e.key]=true);
-document.addEventListener("keyup",e=>keys[e.key]=false);
-
-function movePlayer(){
-
- if(keys["w"] || keys["ArrowUp"]) player.y-=player.speed;
- if(keys["s"] || keys["ArrowDown"]) player.y+=player.speed;
- if(keys["a"] || keys["ArrowLeft"]) player.x-=player.speed;
- if(keys["d"] || keys["ArrowRight"]) player.x+=player.speed;
-
-}
-
-function drawPlayer(){
- ctx.fillStyle="#00aaff";
- ctx.fillRect(
- player.x-player.size/2,
- player.y-player.size/2,
- player.size,
- player.size
- );
-}
-
-let zombies=[];
-
-function spawnZombie(){
-
- const side=Math.floor(Math.random()*4);
-
- let x,y;
-
- if(side===0){
- x=0;
- y=Math.random()*canvas.height;
- }
-
- if(side===1){
- x=canvas.width;
- y=Math.random()*canvas.height;
- }
-
- if(side===2){
- x=Math.random()*canvas.width;
- y=0;
- }
-
- if(side===3){
- x=Math.random()*canvas.width;
- y=canvas.height;
- }
-
- zombies.push({
-  x,
-  y,
-  size:20
- });
-
-}
-
-setInterval(spawnZombie,1000);
-
-function drawZombies(){
-
- zombies.forEach(z=>{
-
- const dx=player.x-z.x;
- const dy=player.y-z.y;
-
- const dist=Math.sqrt(dx*dx+dy*dy);
-
- z.x += dx/dist*1.2;
- z.y += dy/dist*1.2;
-
- ctx.fillStyle="red";
- ctx.fillRect(
- z.x-z.size/2,
- z.y-z.size/2,
- z.size,
- z.size
- );
-
- });
-
-}
-
-function loop(){
-
- ctx.clearRect(0,0,canvas.width,canvas.height);
-
- movePlayer();
-
- drawPlayer();
-
- drawZombies();
-
- requestAnimationFrame(loop);
-
-}
-
-loop();
-
+document.getElementById("year").textContent =
+new Date().getFullYear();
 </script>
 
 </body>
